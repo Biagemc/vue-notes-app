@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <toolbar />
-    <noteContainer />
+    <noteContainer v-bind:notes="notes" v-on:selectNote="selectNote" v-bind:selectedNoteId="selectedNoteId" />
   </div>
 </template>
-	<script>
+<script>
 import toolbar from "./components/Toolbar.vue";
 import noteContainer from "./components/NoteContainer.vue";
 
@@ -14,9 +14,27 @@ export default {
     toolbar,
     noteContainer,
   },
+  data: function() {
+    return {
+      selectedNoteId: 1,
+
+      notes: [
+        { id: 1, body: "This is a first test", timestamp: Date.now() },
+        { id: 2, body: "This is a second test", timestamp: Date.now() },
+        { id: 3, body: "This is a third test", timestamp: Date.now() },
+        { id: 4, body: "This is a fourth test", timestamp: Date.now() },
+        { id: 5, body: "This is a fifth test", timestamp: Date.now() },
+      ],
+    };
+  },
+  methods: {
+    selectNote: function(note) {
+      this.selectedNoteId = note.id;
+    },
+  },
 };
 </script>
-	<style>
+<style>
 /* RESET */
 * {
   margin: 0;

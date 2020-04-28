@@ -1,10 +1,6 @@
 <template>
-  <div
-    class="note-selector"
-    v-on:click="setSelectedNote()"
-    v-bind:class="{active: selectedNoteId === note.id}"
-  >
-    <p class="note-selector-title">{{note.body}}</p>
+  <div class="note-selector" v-on:click="setSelectedNote()" v-bind:class="{ active: selectedNoteId === note.id }">
+    <p class="note-selector-title">{{ note.body }}</p>
     <p class="note-selector-timestamp">Timestamp here...</p>
   </div>
 </template>
